@@ -1,0 +1,25 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:suite="sap.suite.ui.commons" controllerName="ain_mockup_groups.addTaskPanel"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Bar>
+		<contentLeft>
+			<Button icon="sap-icon://nav-back"></Button>
+		</contentLeft>
+		<contentMiddle>
+			<Text text="Measurement Points"></Text>
+		</contentMiddle>
+		<contentRight>
+			<Button icon="sap-icon://filter"></Button>
+		</contentRight>
+	</Bar>
+	<Toolbar>
+	
+			<Button type= "Transparent" icon="sap-icon://add" press="onPressOpenCreateTaskDialog"></Button>
+
+	</Toolbar>
+	<suite:Timeline id="addTaskPnelTimeline" enableSocial="true"
+		width="100%" growing="true" growingThreshold="5" showHeaderBar="false"
+		enableScroll="true" sortOldestFirst="false">
+
+	</suite:Timeline>
+</core:View>

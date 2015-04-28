@@ -1,0 +1,48 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" xmlns:layout="sap.ui.layout" controllerName="ain_mockup_groups.newCollaborations"
+	xmlns:html="http://www.w3.org/1999/xhtml" width="100%" height="100%">
+	<Bar>
+		<contentMiddle>
+			<Text text="New Collaborations"></Text>
+		</contentMiddle>
+	</Bar>
+	<layout:VerticalLayout width="100%">
+		
+						<layout:content>
+							<Label text="Topic"></Label>
+							<Input type="Text" id="groupName" placeholder="What is the collaboration about?"></Input>
+							<Label text="Goal"></Label>
+							<Input type="Text" id="groupDescription"
+								placeholder="What is the goal of the collaboration?"></Input>
+							<Label text="Security Level"></Label>
+							<ActionSelect id="securityLevelActionSelect" items="{/securityLevelData}">
+								<items>
+									<core:Item key="{levelKey}" text="{levelName}"></core:Item>
+								</items>
+							</ActionSelect>
+							<List id="participantsList" noDataText="No participants added">
+								<headerToolbar>
+									<Toolbar>
+										<content>
+											<Text text="Participants"></Text>
+											<ToolbarSpacer></ToolbarSpacer>
+											<Button icon="sap-icon://add" press="onPressOpenAddParticipantDialog"></Button>
+										</content>
+									</Toolbar>
+								</headerToolbar>
+								<items>
+								</items>
+							</List>
+
+						</layout:content>
+
+						<Bar design="Footer">
+							<contentRight>
+								<Button text="Create Group" icon="sap-icon://create"
+									press="onPressCreateGroupAndAddMembers"></Button>
+								<Button text="Cancel" icon="sap-icon://sys-cancel"></Button>
+							</contentRight>
+						</Bar>
+					</layout:VerticalLayout>
+
+</core:View>

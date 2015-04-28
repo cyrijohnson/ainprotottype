@@ -1,0 +1,197 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:uxap="sap.uxap"
+	xmlns:unified="sap.ui.unified" controllerName="ain_mockup_groups.ain_mockup_rightPanel"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+		<unified:Shell>
+			<unified:headItems>
+				<unified:ShellHeadItem icon="sap-icon://home">
+				</unified:ShellHeadItem>
+			</unified:headItems>
+			<unified:headEndItems>
+				<unified:ShellHeadItem icon="sap-icon://search">
+				</unified:ShellHeadItem>
+			</unified:headEndItems>
+			<unified:user>
+				<unified:ShellHeadUserItem image="sap-icon://person-placeholder"
+					username="Deepshikha">
+				</unified:ShellHeadUserItem>
+			</unified:user>
+			<unified:content>
+			<layout:Splitter height="100%">
+				<uxap:ObjectPageLayout id="ain_objectPageLayout" width = "100%" height = "100%">
+				<uxap:layoutData>
+				<layout:SplitterLayoutData size = "80%" resizable = "false">
+				</layout:SplitterLayoutData>
+				</uxap:layoutData>
+					<uxap:headerTitle>
+						<uxap:ObjectPageHeader headerDesign="Dark"
+							objectTitle="Seawater Pump Assembly E23" objectSubtitle="ACME 
+					Industries"
+							objectImageShape="Circle" isObjectIconAlwaysVisible="false"
+							isActionAreaAlwaysVisible="true" isObjectSubtitleAlwaysVisible="false"
+							isObjectTitleAlwaysVisible="false"
+							objectImageURI="http://i01.i.aliimg.com/img/pb/303/911/782/782911303_735.jpg">
+							<uxap:navigationBar>
+								<Bar design="Header">
+									<contentLeft>
+										<Button icon="sap-icon://nav-back"></Button>
+									</contentLeft>
+									<contentMiddle>
+										<Text text="Equipment"></Text>
+									</contentMiddle>
+									<contentRight>
+										<Button icon="sap-icon://decision" press = "showOrHideJamCurtain"></Button>
+									</contentRight>
+								</Bar>
+							</uxap:navigationBar>
+							<uxap:actions>
+								<uxap:ObjectPageHeaderActionButton
+									hideText="false" text="Request Missing Data" />
+								<uxap:ObjectPageHeaderActionButton
+									hideText="false" text="Publish" />
+								<uxap:ObjectPageHeaderActionButton
+									hideText="false" text="More..." />
+								<uxap:ObjectPageHeaderActionButton
+									hideText="false" icon="sap-icon://action" text="action" />
+							</uxap:actions>
+						</uxap:ObjectPageHeader>
+					</uxap:headerTitle>
+					<uxap:headerContent>
+						<Image
+							src="http://i01.i.aliimg.com/img/pb/303/911/782/782911303_735.jpg"
+							width="200px" height="200px"></Image>
+						<layout:VerticalLayout>
+							<ObjectHeader title="{ainI18NModel>EQUIPMENT_NAME}"
+								showTitleSelector="true" />
+							<Label text="Manufacturer ACME Industries" />
+							<Label text="Model E23" />
+							<Label text="Generation 3" />
+							<Label text="Manufacturer Serial Number 123345678" />
+						</layout:VerticalLayout>
+					</uxap:headerContent>
+					<uxap:sections>
+						<uxap:ObjectPageSection title="Announcements">
+							<uxap:subSections>
+								<uxap:ObjectPageSubSection title="Announcements">
+									<uxap:blocks>
+										<Label text="Content goes here.."></Label>
+									</uxap:blocks>
+								</uxap:ObjectPageSubSection>
+							</uxap:subSections>
+						</uxap:ObjectPageSection>
+						<uxap:ObjectPageSection title="Attachments">
+							<uxap:subSections>
+								<uxap:ObjectPageSubSection title="Documents">
+									<uxap:blocks>
+										<Label text="Content goes here.."></Label>
+									</uxap:blocks>
+								</uxap:ObjectPageSubSection>
+								<uxap:ObjectPageSubSection title="Pictures and Video">
+									<uxap:blocks>
+										<Label text="Content goes here.."></Label>
+									</uxap:blocks>
+								</uxap:ObjectPageSubSection>
+							</uxap:subSections>
+						</uxap:ObjectPageSection>
+					</uxap:sections>
+				</uxap:ObjectPageLayout>
+				
+				<layout:VerticalLayout id="ain_right_section" width="100%" height="100%">
+				<layout:layoutData>
+				<layout:SplitterLayoutData size = "auto" resizable = "false">
+				</layout:SplitterLayoutData>
+				</layout:layoutData>
+						<Panel expandable="true" expanded="false" width="100%" height="100%">
+							<headerToolbar>
+								<Toolbar>
+									<Text text="Groups"></Text>
+									<ToolbarSpacer></ToolbarSpacer>
+									<Button icon="sap-icon://display-more" press="onPressShowAllGroups"></Button>
+								</Toolbar>
+							</headerToolbar>
+							<content>
+								<layout:VerticalLayout width="100%" height="100%">
+									<layout:content>
+										<Label text="Topic"></Label>
+										<Input type="Text" id="groupName" placeholder="What is the collaboration about?"></Input>
+										<Label text="Goal"></Label>
+										<Input type="Text" id="groupDescription"
+											placeholder="What is the goal of the collaboration?"></Input>
+										<Label text="Security Level"></Label>
+										<ActionSelect id="securityLevelActionSelect"
+											items="{/securityLevelData}">
+											<items>
+												<core:Item key="{levelKey}" text="{levelName}"></core:Item>
+											</items>
+										</ActionSelect>
+										<List id="participantsList" noDataText="No participants added">
+											<headerToolbar>
+												<Toolbar>
+													<content>
+														<Text text="Participants"></Text>
+														<ToolbarSpacer></ToolbarSpacer>
+														<Button icon="sap-icon://add" press="onPressOpenAddParticipantDialog"></Button>
+													</content>
+												</Toolbar>
+											</headerToolbar>
+											<items>
+											</items>
+										</List>
+
+									</layout:content>
+
+									<Bar design="Footer">
+										<contentRight>
+											<Button text="Create Group" icon="sap-icon://create"
+												press="onPressCreateGroupAndAddMembers"></Button>
+											<Button text="Cancel" icon="sap-icon://sys-cancel"></Button>
+										</contentRight>
+									</Bar>
+								</layout:VerticalLayout>
+							</content>
+						</Panel>
+
+						<Panel expandable="true" expanded="false">
+							<headerToolbar>
+								<Toolbar>
+									<Text text="My Collaborations"></Text>
+									<ToolbarSpacer></ToolbarSpacer>
+									<Button icon="sap-icon://add" press="onPressGoToNewView"></Button>
+									<Button icon="sap-icon://filter"></Button>
+								</Toolbar>
+							</headerToolbar>
+							<content>
+								<List id="myCollaborationsList" noDataText="No Tasks Created"
+									items="{/listOfMyCollaborations}">
+									<items>
+										<StandardListItem title="{taskName}"
+											description="{taskDescription}" info="{priority}"
+											infoState="{path : 'status', formatter : '.checkStatus'}"></StandardListItem>
+									</items>
+								</List>
+							</content>
+						</Panel>
+						<Panel expandable="true" expanded="false">
+							<headerToolbar>
+								<Toolbar>
+									<Text text="Other Collaborations"></Text>
+									<ToolbarSpacer></ToolbarSpacer>
+									<Button icon="sap-icon://filter"></Button>
+								</Toolbar>
+							</headerToolbar>
+							<content>
+								<List id="otherCollaborationsList" noDataText="No Tasks Created"
+									items="{/listOfOtherCollaborations}">
+									<items>
+										<StandardListItem title="{taskName}"
+											description="{taskDescription}" info="{priority}"
+											infoState="{path : 'status', formatter : '.checkStatus'}"></StandardListItem>
+									</items>
+								</List>
+							</content>
+						</Panel>
+						</layout:VerticalLayout>
+						</layout:Splitter>
+			</unified:content>
+		</unified:Shell>
+</core:View>
