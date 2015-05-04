@@ -1,0 +1,29 @@
+.equipment-object-page-header-image-big {
+	border-radius: 50%;
+}
+
+.equipment-structure-component-list-layout {
+	max-height: 610px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.map-details {
+	width: 80% !important;
+}
+
+.equipment-location-map {
+	z-index: 0;
+}
+
+.equipment-overview-timeline .sapSuiteUiCommonsTimelineContentsH {
+	height: 300px !important;
+}
+
+/* equipment overview styles*/
+.equipment-overview-tile {
+	border: solid 1px rgba(128, 128, 128, 0.4);
+	padding: 10px;
+	border-radius: 5px;
+}
+

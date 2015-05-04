@@ -260,7 +260,8 @@ sap.ui.controller("ain_mockup_groups.ain_mockup_rightPanel", {
 		var addTaskPanelView = sap.ui.view({
 			viewName : "ain_mockup_groups.addTaskPanel",
 			type : sap.ui.core.mvc.ViewType.XML,
-			width : "100%"
+			width : "100%",
+			height : "100%"
 		});
 		this.byId("ain_right_section").removeAllContent();
 		this.byId("ain_right_section").addContent(addTaskPanelView);

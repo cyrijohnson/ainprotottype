@@ -1,5 +1,5 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" xmlns:suite="sap.suite.ui.commons" controllerName="ain_mockup_groups.addTaskPanel"
+	xmlns="sap.m" xmlns:commons="sap.suite.ui.commons" controllerName="ain_mockup_groups.addTaskPanel"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Bar>
 		<contentLeft>
@@ -13,13 +13,19 @@
 		</contentRight>
 	</Bar>
 	<Toolbar>
-	
-			<Button type= "Transparent" icon="sap-icon://add" press="onPressOpenCreateTaskDialog"></Button>
-
+		<Button type="Transparent" icon="sap-icon://add" press="onPressOpenCreateTaskDialog"></Button>
 	</Toolbar>
-	<suite:Timeline id="addTaskPnelTimeline" enableSocial="true"
-		width="100%" growing="true" growingThreshold="5" showHeaderBar="false"
-		enableScroll="true" sortOldestFirst="false">
-
-	</suite:Timeline>
+	<ScrollContainer>
+	<content>
+	<commons:Timeline id="addTaskPanelTimeline" height = "100%"
+		enableSocial="true" showHeaderBar="false" content="{/feedEntries}">
+		<commons:content>
+			<commons:TimelineItem
+				dateTime="{path : 'CreatedAt', formatter : '.formatCreatedAtTimeStamp'}"
+				text="{Title}" icon="sap-icon://person-placeholder">
+			</commons:TimelineItem>
+		</commons:content>
+	</commons:Timeline>
+	</content>
+	</ScrollContainer>
 </core:View>

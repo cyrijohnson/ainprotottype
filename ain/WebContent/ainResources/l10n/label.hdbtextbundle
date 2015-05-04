@@ -1,0 +1,92 @@
+# TRANSLATE
+
+# Syntax
+# <SAP-Text-Type>[,<Length-Restriction>[:<Note for translator>]]
+
+
+# APPLICATION
+
+#XTIT: Equipment name
+EQUIPMENT_NAME=Pump 0815 - Pump Assembly, Seawater
+
+#XMSG
+NO_RECORDS_AVAILABLE_MSG = No {0} available 
+
+
+
+#XFLD:
+EQUIPMENT_TYPE=Equipment Type
+
+#XFLD:
+EQUIPMENT_MODEL=Model
+
+#XFLD:
+EQUIPMENT_GENERATION=Generation
+
+#XFLD:
+EQUIPMENT_RELEASE_DATE=Release Date
+
+#XFLD:
+EQUIPMENT_MODEL_EXPIRATION_DATE=Model Expiration Date
+
+#XFLD:
+EQUIPMENT_SERVICE_EXPIRATION_DATE=Service Expiration Date
+
+#XFLD:
+EQUIPMENT_ADDRESS=Address
+
+#XFLD:
+EQUIPMENT_COORDINATES=Geo-Coordinates
+
+#XFLD:
+EQUIPMENT_KEYWORDS=Keywords
+
+#XTIT:
+EQUIPMENT_OVERVIEW=Overview
+
+#XTIT:
+MANUFACTURER_INFORMATION=Manufacturer Information
+
+#XTIT:
+INSTALLATION_INFORMATION=Installation Information
+
+#XTIT:
+LOCATION=Location
+
+#XTIT:
+EQUIPMENT_MANUFACTURER_SERIAL_NUMBER=Manufacturer Serial Number
+
+#XTIT:
+EQUIPMENT_TAG_NUMBER=Tag Number
+
+#XTIT:
+EQUIPMENT_GLOBAL_ID=Global ID
+
+#XTIT:
+EQUIPMENT_INSTALLATION_DATE=Installation Date
+
+#XTIT:
+EQUIPMENT_BUILD_DATE=Build Date
+
+#XTIT:
+EQUIPMENT_STATUS=Status
+
+#XTIT:
+EQUIPMENT_PRODUCTION_CRITICALITY=Production Criticality
+
+#XTIT:
+EQUIPMENT_SAFETY_RISK=Safety Risk
+
+#XTIT:
+EQUIPMENT_DESCRIPTION=Description
+
+#XTIT:
+EQUIPMENT_OPERATING_CONDITIONS=Operating Conditions
+
+#XTIT:
+EQUIPMENT_KEYWORDS=Keywords
+
+#XTIT:
+TIMELINE_EVENTS=Events ({0})
+
+

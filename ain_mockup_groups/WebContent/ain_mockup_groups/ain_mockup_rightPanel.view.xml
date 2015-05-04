@@ -20,7 +20,7 @@
 			<layout:Splitter height="100%">
 				<uxap:ObjectPageLayout id="ain_objectPageLayout" width = "100%" height = "100%">
 				<uxap:layoutData>
-				<layout:SplitterLayoutData size = "80%" resizable = "false">
+				<layout:SplitterLayoutData size = "100%" resizable = "false">
 				</layout:SplitterLayoutData>
 				</uxap:layoutData>
 					<uxap:headerTitle>

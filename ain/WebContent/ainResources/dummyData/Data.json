@@ -1,0 +1,273 @@
+{
+    "ManufacturerInformation": {
+        "Description": "Pump Assembly, Seawater",
+        "Manufacturer": "ACME Industries",
+        "EquipmentClass": "Pump",
+        "EquipmentType": "Pump Set",
+        "Model": "E23",
+        "Generation": "3",
+        "ReleaseDate": "05.11.2001",
+        "ModelExpDate": "23.10.2015",
+        "ServiceExpDate": "08.04.2016",
+        "Firmware": "Yes",
+        "Size": "1.30m x 1.00m",
+        "Weight": "500kg",
+        "SafteyRisk": "Low",
+        "Image": "./ainResources/icons/Logo.png"
+    },
+    "InstallationInformation": {
+        "ManSerialNum": "12345678",
+        "Tagnumber": "PU298",
+        "GlobalId": "1110001010220324243",
+        "InstallationDate": "03.04.2005",
+        "BuildDate": "15.12.2004",
+        "Status": "Active",
+        "ProductionCriticality": "Medium",
+        "SafetyRisk": "Low",
+        "Description": "Super Pump in Building 18, which pumps water",
+        "OperatingConditions": "Hot, Humid, Dusty",
+        "Keywords": "ACME Industries, Pump, Water, Project 505, Electrical System X"
+    },
+    "EquipmentOverviewTimeline": {
+        "Events": [
+            {
+                "OrderDate": "01.02.2015",
+                "CustomerID": "",
+                "CustomerName": "Jim Worker added a picture.",
+                "ProductName": "Pump Set",
+                "Icon": "sap-icon://edit",
+                "Type": "ImageUpload",
+                "Url": "./ainResources/icons/Image.png"
+            },
+            {
+                "OrderDate": "02.03.2015 at 03:36 PM",
+                "CustomerID": "",
+                "CustomerName": "Collaboration with ACME Industries started.",
+                "ProductName": "Pump Set",
+                "Icon": "sap-icon://decision",
+                "Type": "Chat",
+                "Text": "Why is the mechanical seal breaking?"
+            },
+            {
+                "OrderDate": "08.02.2015",
+                "CustomerID": "",
+                "CustomerName": "Machine Breakdown",
+                "ProductName": "Pump Set",
+                "Icon": "sap-icon://alert",
+                "Type": "Alert",
+                "Url": "./ainResources/icons/Graph.png",
+                "AlertMessage": "Temperature too high",
+                "LinkText": "Open PdMS",
+                "Link": "http://www.sap.com"
+            },
+            {
+                "OrderDate": "09.03.2015",
+                "CustomerID": "",
+                "CustomerName": "Service Bulletin",
+                "ProductName": "Pump Set",
+                "Icon": "sap-icon://marketing-campaign",
+                "Type": "Broadcast",
+                "LinkText": "Bearing Replacement",
+                "Text": "Recomended bearing replacement due to chance of failure in high stress situations",
+                "Status": "Status: Reviewing"
+            },
+            {
+                "OrderDate": "12.03.2015 at 03:36 PM",
+                "CustomerID": "",
+                "CustomerName": "Jane Designer published a document.",
+                "ProductName": "Pump Set",
+                "Icon": "sap-icon://edit",
+                "Type": "FileUpload",
+                "Url": "./ainResources/icons/Image.png",
+                "FileName": "Change_Bearing.pdf"
+            },
+            {
+                "OrderDate": "12.03.2015 at 03:36 PM",
+                "CustomerID": "",
+                "CustomerName": "Collaboration with ACME Industries finished.",
+                "ProductName": "Pump Set",
+                "Icon": "sap-icon://decision",
+                "Type": "Chat",
+                "Text": "Why is the mechanical seal breaking?"
+            },
+            {
+                "OrderDate": "Today",
+                "CustomerID": "",
+                "CustomerName": "Alex Planner started a Performance Improvement Collaboration.",
+                "ProductName": "Pump Set",
+                "Icon": "sap-icon://decision",
+                "Type": "Chat",
+                "Text": "Reduce Energy Usage of Pumps"
+            }
+        ]
+    },
+    "EquipmentOverviewTiles": {
+        "RelatedPersons": [
+            {
+                "PersonName": "Robert Schipp",
+                "PersonDescription": "Maintenance Worker",
+                "PersonImage": "ainResources/icons/u940.png"
+            },
+            {
+                "PersonName": "Michael Pride",
+                "PersonDescription": "Manufacturer",
+                "PersonImage": "ainResources/icons/u942.jpg"
+            }
+        ],
+        "MeasuringPoints": [
+            {
+                "measuringPoint": "0 Errors",
+                "measuringPointImage": "sap-icon://alert"
+            },
+            {
+                "measuringPoint": "1 Warnings",
+                "measuringPointImage": "sap-icon://warning2"
+            },
+            {
+                "measuringPoint": "3 Information",
+                "measuringPointImage": "sap-icon://error"
+            }
+        ],
+        "MapItems": {
+            "MapPosition": "38;76;0",
+            "MapImage": "sap-icon://map",
+            "LocationLabel": "Germany, Waldorf, Plant 3"
+        },
+        "SafetyRules": [
+            {
+                "SafetyRuleImage": "ainResources/icons/u1100.PNG"
+            },
+            {
+                "SafetyRuleImage": "ainResources/icons/u1102.PNG"
+            },
+            {
+                "SafetyRuleImage": "ainResources/icons/u1105.PNG"
+            },
+            {
+                "SafetyRuleImage": "ainResources/icons/u1116.PNG"
+            },
+            {
+                "SafetyRuleImage": "ainResources/icons/u1118.PNG"
+            },
+            {
+                "SafetyRuleImage": "ainResources/icons/u1121.PNG"
+            }
+        ]
+    },
+    "EquipmentRelatedEquipment": {
+        "OtherInstancesOfModel": [
+            {
+                "ModelImage": "ainResources/icons/u1228.PNG",
+                "ModelName": "Pump 12533425",
+                "SerialNumber": "12435665",
+                "Location": "Germany, Waldorf",
+                "Plant": 3
+            },
+            {
+                "ModelImage": "ainResources/icons/u901.PNG",
+                "ModelName": "Pump 12533890",
+                "SerialNumber": "12430987",
+                "Location": "Germany, Waldorf",
+                "Plant": 5
+            },
+            {
+                "ModelImage": "ainResources/icons/u1206.PNG",
+                "ModelName": "Pump 12534456",
+                "SerialNumber": "12432345",
+                "Location": "Germany, Berlin",
+                "Plant": 1
+            },
+            {
+                "ModelImage": "ainResources/icons/u1255.png",
+                "ModelName": "Pump 12509876",
+                "SerialNumber": "12487654",
+                "Location": "Germany, berlin",
+                "Plant": 1
+            }
+        ],
+        "SimilarModels": [
+            {
+                "ModelImage": "ainResources/icons/u1228.PNG",
+                "ModelName": "Pump 12533425",
+                "Model": "E21",
+                "Manufacturer": "ACME Industries",
+                "Generation": 1
+            },
+            {
+                "ModelImage": "ainResources/icons/u901.PNG",
+                "ModelName": "Pump 12533890",
+                "Model": "E22",
+                "Manufacturer": "Acme Industries",
+                "Generation": 2
+            },
+            {
+                "ModelImage": "ainResources/icons/u1206.PNG",
+                "ModelName": "Pump 12534456",
+                "Model": "D45",
+                "Manufacturer": "Pump Master Inc.",
+                "Generation": 1
+            },
+            {
+                "ModelImage": "ainResources/icons/u1255.png",
+                "ModelName": "Pump 12509876",
+                "Model": "D46",
+                "Manufacturer": "Master Inc.",
+                "Generation": 2
+            }
+        ]
+    },
+    "EquipmentRelatedPersons": [
+        {
+            "PersonName": "Robert Schipp",
+            "PersonImage": "ainResources/icons/u940.png",
+            "PersonJob": "Maintenance Worker",
+            "PersonWorkedOn": "Jim to take a picture"
+        },
+        {
+            "PersonName": "Robert Schipp",
+            "PersonImage": "ainResources/icons/u942.jpg",
+            "PersonJob": "Maintenance Worker",
+            "PersonWorkedOn": "Jim to take a picture"
+        },
+        {
+            "PersonName": "Michael Pride",
+            "PersonImage": "ainResources/icons/u944.png",
+            "PersonJob": "Manufacturer, Acme Industries",
+            "PersonWorkedOn": "Ask manufacturer for details"
+        },
+        {
+            "PersonName": "Michael Pride",
+            "PersonImage": "ainResources/icons/u946.jpg",
+            "PersonJob": "Manufacturer, Acme Industries",
+            "PersonWorkedOn": "Ask manufacturer for details"
+        }
+    ],
+    "EquipmentReliability": {
+        "SafetyRules": [
+            {
+                "Rule": "You have to wear safety glasses.",
+                "RuleImage": "ainResources/icons/u1100.PNG"
+            },
+            {
+                "Rule": "Ear protection is required.",
+                "RuleImage": "ainResources/icons/u1102.PNG"
+            },
+            {
+                "Rule": "There could be high temperature.",
+                "RuleImage": "ainResources/icons/u1105.PNG"
+            },
+            {
+                "Rule": "Read the operator's manual.",
+                "RuleImage": "ainResources/icons/u1116.PNG"
+            },
+            {
+                "Rule": "Always wear protective shoes.",
+                "RuleImage": "ainResources/icons/u1118.PNG"
+            },
+            {
+                "Rule": "Connect each terminal to the ground.",
+                "RuleImage": "ainResources/icons/u1121.PNG"
+            }
+        ]
+    }
+}

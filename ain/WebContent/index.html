@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+
+		<script src="https://sapui5.netweaver.ondemand.com/sdk/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m, sap.uxap"
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		
+		<script src="./reusable/libraries/Utils.js"></script>
+		<script src="./reusable/libraries/dvl.js"></script>
+		<script src="./reusable/libraries/Loco.js"></script>
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+
+		<script>
+		
+		
+// 			jQuery.sap.require("sap.ve.js.dvl");
+// 			jQuery.sap.require("sap.ve.Viewer");
+// 			jQuery.sap.require("sap.ve.ViewerStepNavigation");
+
+			sap.ui.localResources("ain");
+			sap.ui.localResources("controllers");
+			sap.ui.localResources("views");
+			sap.ui.localResources("reusable");
+			sap.ui.localResources("ainResources");
+			sap.ui.localResources("config");
+
+			jQuery.sap.registerModulePath("reusable", "./reusable/");
+			jQuery.sap.registerModulePath("views", "./views/");
+			jQuery.sap.registerModulePath("controllers", "./controllers/");
+
+			jQuery.sap.require("reusable.libraries.Startup");
+		</script>
+
+	</head>
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

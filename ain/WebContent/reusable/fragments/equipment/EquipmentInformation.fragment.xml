@@ -1,0 +1,200 @@
+<ObjectPageSection id="equipment-information-section"
+	title="Equipment Information" xmlns="sap.uxap" xmlns:m="sap.m"
+	xmlns:VBM="sap.ui.vbm" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout" mode="Collapsed">
+	<subSections>
+		<ObjectPageSubSection title="{ainI18NModel>MANUFACTURER_INFORMATION}"
+			id="equipment-manufacturer-information-sub-section">
+			<blocks>
+				<l:Grid defaultSpan="L12 M12 S12" defaultIndent="L0 M0 S0"
+					vSpacing="1">
+					<l:content>
+						<form:SimpleForm columnLayout="auto" editable="false"
+							layout="ResponsiveGridLayout" maxContainerCols="2" emptySpanL="3"
+							emptySpanM="3" columnsL="2" columnsM="2" labelSpanL="5"
+							labelSpanM="5" class="">
+							<form:content>
+								<core:Title text="" visible="false"></core:Title>
+								<m:Label text="Description">
+								</m:Label>
+								<m:Text text="{/Description}">
+								</m:Text>
+								<m:Label text="Manufacturer">
+								</m:Label>
+								<m:Text text="{/Manufacturer}">
+								</m:Text>
+								<m:Label text="Equipment Class">
+								</m:Label>
+								<m:Text text="{/EquipmentClass}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_TYPE}">
+								</m:Label>
+								<m:Text text="{/EquipmentType}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_MODEL}">
+								</m:Label>
+								<m:Text text="{/Model}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_GENERATION}">
+								</m:Label>
+								<m:Text text="{/Generation}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_RELEASE_DATE}">
+								</m:Label>
+								<m:Text text="{/ReleaseDate}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_MODEL_EXPIRATION_DATE}">
+								</m:Label>
+								<m:Text text="{/ModelExpDate}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_SERVICE_EXPIRATION_DATE}">
+								</m:Label>
+								<m:Text text="{/ServiceExpDate}">
+								</m:Text>
+
+								<core:Title text="" visible="false"></core:Title>
+								<m:Label text="Firmware">
+								</m:Label>
+								<m:Text text="{/Firmware}">
+								</m:Text>
+								<m:Label text="Size">
+								</m:Label>
+								<m:Text text="{/Size}">
+								</m:Text>
+								<m:Label text="Weight">
+								</m:Label>
+								<m:Text text="{/Weight}">
+								</m:Text>
+								<m:Label text="Saftey Risk">
+								</m:Label>
+								<m:Text text="{/SafteyRisk}">
+								</m:Text>
+								<m:Label text="Logo">
+								</m:Label>
+								<m:Image src="{/Image}">
+								</m:Image>
+							</form:content>
+						</form:SimpleForm>
+					</l:content>
+				</l:Grid>
+			</blocks>
+			<actions>
+				<m:Button type="Transparent" icon="sap-icon://notes"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://pushpin-off"></m:Button>
+			</actions>
+		</ObjectPageSubSection>
+
+		<ObjectPageSubSection title="{ainI18NModel>INSTALLATION_INFORMATION}"
+			id="equipment-installation-information-sub-section">
+			<blocks>
+				<l:Grid defaultSpan="L12 M12 S12" defaultIndent="L0 M0 S0"
+					vSpacing="1">
+					<l:content>
+						<form:SimpleForm columnLayout="auto" editable="false"
+							layout="ResponsiveGridLayout" maxContainerCols="2" emptySpanL="3"
+							emptySpanM="3" columnsL="2" columnsM="2" labelSpanL="5"
+							labelSpanM="5" class="">
+							<form:content>
+								<core:Title text="" visible="false"></core:Title>
+								<m:Label text="{ainI18NModel>EQUIPMENT_MANUFACTURER_SERIAL_NUMBER}">
+								</m:Label>
+								<m:Text text="{/ManSerialNum}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_TAG_NUMBER}">
+								</m:Label>
+								<m:Text text="{/Tagnumber}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_GLOBAL_ID}">
+								</m:Label>
+								<m:Text text="{/GlobalId}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_INSTALLATION_DATE}">
+								</m:Label>
+								<m:Text text="{/InstallationDate}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_BUILD_DATE}">
+								</m:Label>
+								<m:Text text="{/BuildDate}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_STATUS}">
+								</m:Label>
+								<m:Text text="{/Status}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_PRODUCTION_CRITICALITY}">
+								</m:Label>
+								<m:Text text="{/ProductionCriticality}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_SAFETY_RISK}">
+								</m:Label>
+								<m:Text text="{/SafetyRisk}">
+								</m:Text>
+
+								<core:Title text="" visible="false"></core:Title>
+								<m:Label text="{ainI18NModel>EQUIPMENT_DESCRIPTION}">
+								</m:Label>
+								<m:Text text="{/Description}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_OPERATING_CONDITIONS}">
+								</m:Label>
+								<m:Text text="{/OperatingConditions}">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_KEYWORDS}">
+								</m:Label>
+								<m:Text text="{/Keywords}">
+								</m:Text>
+							</form:content>
+						</form:SimpleForm>
+					</l:content>
+				</l:Grid>
+			</blocks>
+			<actions>
+				<m:Button type="Transparent" icon="sap-icon://notes"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://edit"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://pushpin-off"></m:Button>
+			</actions>
+		</ObjectPageSubSection>
+
+
+		<ObjectPageSubSection title="{ainI18NModel>LOCATION}"
+			id="equipment-location-information-sub-section">
+			<blocks>
+				<l:Grid defaultSpan="L6 M12 S12" defaultIndent="L0 M0 S0"
+					vSpacing="1">
+					<l:content>
+						<form:SimpleForm columnLayout="auto" editable="false"
+							layout="ResponsiveGridLayout" emptySpanL="1"
+							emptySpanM="1" columnsL="2" columnsM="2" labelSpanL="1"
+							labelSpanM="1" class="">
+							<form:content>
+								<core:Title text="" visible="false"></core:Title>
+								<m:Label text="{ainI18NModel>EQUIPMENT_ADDRESS}">
+								</m:Label>
+								<m:Text
+									text="SAP Labs Bus Stop, Road Number 2, KIADB Export Promotion Industrial Area, Whitefield, Bengaluru, Karnataka 560048, India">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_COORDINATES}">
+								</m:Label>
+								<m:Text text="N 12° 58' 40.0382 E 77° 42' 51.917">
+								</m:Text>
+								<m:Label text="{ainI18NModel>EQUIPMENT_KEYWORDS}">
+								</m:Label>
+								<m:Text text="Plant 3, White Production Hall">
+								</m:Text>
+							</form:content>
+						</form:SimpleForm>
+						<VBM:VBI id="equipment-location-map" class="equipment-location-map"
+							width="500px" height="250px" plugin="false" submit="fnEventHandler"
+							config="{equipmentLocationInformation>/}" openWindow="openDetailWindow">
+						</VBM:VBI>
+					</l:content>
+				</l:Grid>
+			</blocks>
+			<actions>
+				<m:Button type="Transparent" icon="sap-icon://notes"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://edit"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://pushpin-off"></m:Button>
+			</actions>
+		</ObjectPageSubSection>
+
+	</subSections>
+</ObjectPageSection>

@@ -1,0 +1,100 @@
+<ObjectPageSection id="equipment-overview-section"
+	title="Structure" xmlns:core="sap.ui.core" xmlns="sap.uxap" xmlns:m="sap.m"
+	xmlns:commons="sap.suite.ui.commons" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified"
+	xmlns:form="sap.ui.layout.form" mode="Collapsed" xmlns:vbm="sap.ui.vbm">
+	<subSections>
+		<ObjectPageSubSection title="{ainI18NModel>EQUIPMENT_OVERVIEW}">
+			<blocks>
+				<l:VerticalLayout width="100%">
+					<l:content>
+						<l:Grid hSpacing="0" defaultSpan="L3 M6 S12" id="equipment-overview-tile-container">
+							<l:content>
+								<m:CustomTile class="equipment-overview-tile">
+									<m:content width="100%" height="100%">
+										<l:VerticalLayout>
+											<m:Text class="equipment-overview-header-text" text="Related Persons"></m:Text>
+											<m:List items="{/RelatedPersons}">
+												<m:items>
+													<m:StandardListItem width="100%" height="100%"
+														title="{PersonName}" description="{PersonDescription}"
+														icon="{PersonImage}"></m:StandardListItem>
+												</m:items>
+											</m:List>
+										</l:VerticalLayout>
+									</m:content>
+								</m:CustomTile>
+
+								<m:CustomTile class="equipment-overview-tile">
+									<m:content>
+										<l:VerticalLayout>
+											<m:Text class="equipment-overview-header-text" text="Measuring Points"></m:Text>
+											<m:List items="{/MeasuringPoints}">
+												<m:items>
+													<m:StandardListItem title="{measuringPoint}"
+														icon="{measuringPointImage}"></m:StandardListItem>
+												</m:items>
+											</m:List>
+										</l:VerticalLayout>
+									</m:content>
+								</m:CustomTile>
+
+								<m:CustomTile class="equipment-overview-tile">
+									<m:content>
+										<l:VerticalLayout>
+											<m:Text class="equipment-overview-header-text" text="Location"></m:Text>
+											<vbm:GeoMap width="183px" height="197px" class="equipment-location-map">
+												<vbm:resources>
+													<vbm:Resource name="map-pin"
+														src="ainResources/icons/green-dot.png"></vbm:Resource>
+												</vbm:resources>
+												<vbm:vos>
+													<vbm:Spots>
+														<vbm:items>
+															<vbm:Spot position="38;76;0" image="map-pin"
+																labelText="Germany, Waldorf, Plant 3">
+															</vbm:Spot>
+														</vbm:items>
+													</vbm:Spots>
+												</vbm:vos>
+											</vbm:GeoMap>
+										</l:VerticalLayout>
+									</m:content>
+								</m:CustomTile>
+
+								<m:CustomTile class="equipment-overview-tile">
+									<m:content>
+										<l:VerticalLayout>
+											<m:Text class="equipment-overview-header-text" text="Safety Rules"></m:Text>
+											<l:Grid defaultSpan="L6 M12 S12" content="{/SafetyRules}">
+												<l:content>
+
+													<m:Image width="3rem" height="3rem" src="{SafetyRuleImage}"></m:Image>
+												</l:content>
+											</l:Grid>
+										</l:VerticalLayout>
+									</m:content>
+								</m:CustomTile>
+							</l:content>
+						</l:Grid>
+
+						<m:Panel>
+							<m:headerToolbar>
+								<m:Toolbar height="3rem">
+									<m:Label text="" id="equipment-overview-timeline-event-count"></m:Label>
+									<m:ToolbarSpacer />
+								</m:Toolbar>
+							</m:headerToolbar>
+							<m:content>
+								<commons:Timeline id="equipment-overview-timeline"
+									enableSocial="true" class="equipment-overview-timeline" width="30%"
+									axisOrientation="Horizontal" growing="false" growingThreshold="4"
+									showHeaderBar="false" enableScroll="false" sortOldestFirst="true">
+								</commons:Timeline>
+							</m:content>
+						</m:Panel>
+					</l:content>
+				</l:VerticalLayout>
+			</blocks>
+		</ObjectPageSubSection>
+	</subSections>
+</ObjectPageSection>

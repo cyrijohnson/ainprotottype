@@ -1,0 +1,63 @@
+<ObjectPageSection id="equipment-structure-section"
+	title="Structure" xmlns:core="sap.ui.core" xmlns="sap.uxap" xmlns:m="sap.m"
+	xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" xmlns:form="sap.ui.layout.form"
+	mode="Collapsed">
+	<subSections>
+		<ObjectPageSubSection title="Component Structure">
+			<blocks>
+				<l:VerticalLayout id="equipment-structure-layout">
+<!-- 					<form:SimpleForm columnLayout="auto"> -->
+<!-- 						<form:content> -->
+<!-- 							<m:Label text="Node ID"></m:Label> -->
+<!-- 							<m:Text text="{/NodeID}"></m:Text> -->
+<!-- 							<m:Label text="Part Name"></m:Label> -->
+<!-- 							<m:Text text="{/PartName}"></m:Text> -->
+<!-- 						</form:content> -->
+<!-- 					</form:SimpleForm> -->
+					<core:HTML
+						content="&lt;canvas id=&quot;equipment-canvas&quot; class=&quot;equipment-canvas&quot; &gt;&lt;/canvas&gt;"></core:HTML>
+					<u:FileUploader id="equipment-structure-file-uploader"
+						name="" width="400px" tooltip="Upload your file to the local server"
+						fileType="txt,jpg,vds" change="onChange" />
+
+					<!-- <form:Form> -->
+					<!-- <form:FormContainer formElements="{/metadata}"> -->
+					<!-- <form:FormElement> -->
+					<!-- <label> -->
+					<!-- <Label text="{name}"></Label> -->
+					<!-- </label> -->
+					<!-- <fields> -->
+					<!-- <Text text="{value}"></Text> -->
+					<!-- </fields> -->
+					<!-- </form:FormElement> -->
+					<!-- </form:FormContainer> -->
+					<!-- </form:Form> -->
+
+				</l:VerticalLayout>
+			</blocks>
+			<blocks>
+				<l:HorizontalLayout height="500px" class="equipment-structure-component-list-layout">
+					<m:List id="equipment-structure-component-list" select="fnHandleSelectOfNodeDetailsList"
+						mode="SingleSelectMaster" items="{/nodeDetails}">
+						<m:items>
+							<m:StandardListItem title="{NodeName}"
+								selected="{bIsSelected}"></m:StandardListItem>
+						</m:items>
+					</m:List>
+				</l:HorizontalLayout>
+			</blocks>
+			<actions>
+				<m:Button type="Transparent" icon="sap-icon://notes"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://edit"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://pushpin-off"></m:Button>
+			</actions>
+		</ObjectPageSubSection>
+
+		<ObjectPageSubSection title="Spare Parts">
+			<blocks>
+				<m:Label text="Content goes here.."></m:Label>
+			</blocks>
+		</ObjectPageSubSection>
+
+	</subSections>
+</ObjectPageSection>

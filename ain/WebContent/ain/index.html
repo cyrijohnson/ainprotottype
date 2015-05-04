@@ -1,0 +1,533 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="keywords" content="Control Shell" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta content="width=device-width, initial-scale= 1.0, user-scalable=no" name="viewport">
+    <meta name="HandheldFriendly" content="True" />
+    <title>SAP 3D Visual Enterprise HTML5 Viewer - sample application</title>
+	<style>
+		/*body {
+	    touch-action:none;
+	    -ms-touch-action:none;
+	    -webkit-touch-action:none;
+		}*/
+	</style>
+    <script src="resources/sap-ui-core-dbg.js" type="text/javascript"
+            id="sap-ui-bootstrap" 
+            data-sap-ui-libs="sap.ui.commons, sap.m, sap.ve"
+            data-sap-ui-theme="sap_bluecrystal">
+    </script>
+    <script>
+        // HELPER: Get parameter from URL
+        function getUrlParams() {
+            var params = [], paramPair;
+            var paramStrings = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < paramStrings.length; i++) {
+                paramPair = paramStrings[i].split('=');
+                params.push(paramPair[0]);
+                params[paramPair[0]] = paramPair[1];
+            }
+            return params;
+        }
+    </script>
+    <script type="text/javascript" defer>
+    	var params = getUrlParams();
+    	var sidePanelWidth = 250;
+    	var verticalSpacerWidth = 10;
+    	var approxMargin = 8;
+    	var bLoggingActive = false;
+    	var advanced = params["advanced"] ? params["advanced"] == "true" : false;
+    	var totalMemory = params["totalMemory"] ? params["totalMemory"] * (1024 * 1024) : null;
+    	
+	    //**********************************************
+	    //**** APPLICATION HEADER       ****
+	    //**********************************************
+	    //create the ApplicationHeader control
+	    var oAppHeader = new sap.ui.commons.ApplicationHeader("appHeader", {
+	        logoSrc: "SAPLogo.gif",
+	        logoText: "SAP 3D Visual Enterprise HTML5 Viewer - sample application",
+	        displayWelcome: false,
+	        displayLogoff: false
+	    }).placeAt("body");
+    
+    	jQuery.sap.require("sap.ve.js.dvl");
+    	jQuery.sap.require("sap.ve.Viewer");
+    	jQuery.sap.require("sap.ve.ViewerStepNavigation");
+    	var oViewer;
+    	var oStepNavigation;
+    	
+    	$(document).ready(function(){
+    		//Create the viewer and Step Navigation control
+        	oViewer = new sap.ve.Viewer({ height: 512, width: 512, totalMemory: totalMemory, autoResize:true });
+        	oStepNavigation = new sap.ve.ViewerStepNavigation({logEnabled:true, viewerInstance: oViewer});	
+    		
+	        //**********************************************
+	        //**** LOADING SECTION OF SIDE PANEL        ****
+	        //**********************************************
+	       	//File URL field
+            var inputFileUrl = new sap.m.Input({
+                width: "100%",
+				value: "./mdl/998Clutch.vds",
+                type: sap.m.InputType.Url,
+                placeholder: 'Enter URL ...'
+            });
+	        
+            var inputFileUrlButton = new sap.ui.commons.Button({
+              height: "2.5rem",
+              width: "100%",
+              text: "Load URL",
+              style: sap.ui.commons.ButtonStyle.Default
+          	}).attachBrowserEvent("touchstart tap click", function (ev) { //We need to handle both click and tap and can't use press because it is a separate event, so we get doubling up of the call
+		  		if(!ev._sapui_handledByControl)
+		  			{
+		            var url = inputFileUrl.getValue();
+		            
+		            if (url != '' && url.lastIndexOf(".")!=-1) {
+		              var ext = url.substring(url.lastIndexOf(".") + 1);
+		              if (oViewer.SupportedFileTypes.test(ext)) {
+		              	oViewer.loco.log("Uploading:" + url + "(" + new Date().getTime() + ")");
+		              	oViewer.setBusy(true);
+		              	oViewer.loadFile(url);
+		              } else {
+		                  alert("Viewer cannot load files of type '" + ext + "'");
+		              }
+		            }
+		            ev._sapui_handledByControl = true;
+		            ev.stopPropagation();
+		            ev.preventDefault();
+		  		}
+              return false;
+          });
+	        
+	        
+	        //Browse to load a local file. Includes 'Tap' event handler to make this work on touch enabled devices
+            var inputFileLocal = new sap.ui.commons.FileUploader( {
+                style: sap.ui.commons.ButtonStyle.Default,
+                name: "uploadVds",
+                uploadOnChange: false,
+                visible: true,
+                sameFilenameAllowed: true
+            }).addEventDelegate({
+                onAfterRendering: function (e) {
+                    $(e.srcControl.oFileUpload.form).hide();
+                    e.srcControl.oFileUpload.onchange = function (ev) {
+						var tar = ev.target || ev.srcElement;
+                        if (tar.files.length > 0) {
+                            var ext = tar.files[0].name.substring(tar.files[0].name.lastIndexOf('.') + 1).toLowerCase();
+                            if (oViewer.SupportedFileTypes.test(ext)) {
+                            	oViewer.loco.log("Uploading:" + tar.files[0].name + "(" + new Date().getTime() + ")");
+                            	oViewer.setBusy(true);
+                            	oViewer.loadFile(tar.files[0]);
+                            } else {
+                            	alert("Viewer cannot load files of type '" + ext + "'");
+                            }
+
+                        }
+                    };
+                }
+            });
+	        
+            //Button for hidden fileupload control. This approach as better support for touch devices
+            var inputFileButton = new sap.ui.commons.Button({
+                height: "2.5rem",
+                width: "100%",
+                text: "Load Local File",
+                style: sap.ui.commons.ButtonStyle.Default
+            }).attachBrowserEvent("touchstart tap click", function (ev) { //We need to handle both click and tap and can't use press because it is a separate event, so we get doubling up of the call
+                ev.stopPropagation();
+                ev.preventDefault();
+                inputFileLocal.oFileUpload.value = "";
+                inputFileLocal.oFileUpload.click();
+                return false;
+            });
+	        
+	        var loadingPanel = new sap.m.Panel({
+	            width: sidePanelWidth + "px",
+	            headerToolbar: new sap.m.Toolbar({
+	                content: [
+	                    new sap.m.Label({ text: "Load Models" })
+	                ]
+	            }),
+	            content: [
+					inputFileUrl,
+					inputFileUrlButton,
+	                inputFileLocal,
+	                new sap.m.HBox({ height: "5px" }),
+	                inputFileButton
+	            ]
+	        });
+          //**********************************************
+          //**** START SETTING UP SIDE PANEL ACCORDION **
+          //**********************************************
+          var sidePanelAccordion = new sap.ui.commons.Accordion("sampleAppSidePanel",            
+              {
+                  
+              }).attachBrowserEvent("tap", function (ev) { //We need to handle both click and tap and can't use press because it is a separate event, so we get doubling up of the call
+                  //var that = this;
+                  //ev.stopPropagation();
+                  //ev.preventDefault();
+                  //sidePanelAccordion.click();
+                  //console.log("Accordion tap");
+                  ////sidePanelAccordion.click(e);
+                  //return false;
+              });
+          
+		        
+			//**********************************************
+			//****  CREATE MAIN PAGE LAYOUT             ****
+			//**********************************************
+			var oViewerSampleLayout = new sap.ui.layout.VerticalLayout("ViewerSampleLayout", {
+			    width: "100%",
+			    content: [
+			        new sap.m.FlexBox({
+			            alignItems: "Start",
+			            justifyContent: "Start",
+			            items: [
+			                new sap.ui.layout.VerticalLayout("ViewerSampleOperations",{
+			                    content: [
+			                        loadingPanel,
+			                        sidePanelAccordion
+			                    ]
+			                }),
+			                new sap.m.VBox({width: verticalSpacerWidth + "px"}),
+			                new sap.ui.layout.VerticalLayout("ViewerSampleControls",{
+			                    content: [oViewer,oStepNavigation]  
+			                })]
+			        })]
+			});
+			
+			// <fieldset><legend>Personalia:</legend>
+			oViewerSampleLayout.placeAt("body");
+		    
+            
+            //****************************************************************
+            //**** Elements and Event Listeners for NodeSelectionChanged  ****
+            //****************************************************************
+            var metadataText = new sap.m.TextArea({
+                cols: 40,
+                rows: 7
+            
+            });
+
+            var inputSelectedText = new sap.m.Input({
+                width: "100%",
+                type: sap.m.InputType.Text,
+            });
+            
+            var logText = new sap.m.TextArea({
+                width: "100%",
+                rows: 5,
+                value: ''
+            });
+
+            //Clear the selected node and metadata fields when the scene changes
+            oViewer.attachSceneChanged(function (oEvent) {
+                inputSelectedText.setValue("");
+                metadataText.setValue("");
+            });
+
+                //Connect Metadata Text to node selection changed event in Viewer Control 
+            oViewer.attachNodeSelectionChanged(function (oEvent) {
+                var numberOfSelectedNodes = oEvent.getParameter("numberOfSelectedNodes"); 
+                var idFirstSelectedNode = oEvent.getParameter("idFirstSelectedNode"); 
+                var sceneId = oEvent.getParameter("sceneId"); 
+                var clientId = oEvent.getParameter("clientId"); 
+                
+            	if (numberOfSelectedNodes == 0) {
+                    inputSelectedText.setValue("");
+                    metadataText.setValue("");
+                }else if (numberOfSelectedNodes == 1) {
+                    inputSelectedText.setValue(idFirstSelectedNode);
+                    metadataText.setBusy(true);
+                    metadataText.setValue(JSON.stringify(oViewer.oDvl.Scene.RetrieveMetadata(sceneId, idFirstSelectedNode)));
+                    metadataText.setBusy(false);
+                } else if (numberOfSelectedNodes > 1) {
+                    inputSelectedText.setValue(idFirstSelectedNode);
+                    metadataText.setValue("[Multiple Selected]");
+                }
+
+            });
+
+            //Write LogMessage info to Advanced/Log
+            oViewer.attachMessageLogged(function (oEvent){
+                var clientId = oEvent.getParameter("clientId"); 
+                var type = oEvent.getParameter("type"); 
+                var source = oEvent.getParameter("source"); 
+                var text = oEvent.getParameter("text"); 
+                
+            	if (bLoggingActive) {
+                    logText.setValue((source + "(" + type + "): " + text) + "\n" + logText.getValue());
+                    logText.scrollTop = 99999; // focus on bottom 
+                }
+            });
+
+            //**********************************************
+            //**** METADATA ACCORDION PANEL CODE        ****
+            //**********************************************
+            var oMetadataSection = new sap.ui.commons.AccordionSection("metadataSection",
+                {
+                    width: sidePanelWidth + "px",
+                    title: "Metadata",
+                    toolTip: "Metadata for the currently selected node",
+                    collapsed: false,
+                    content: [
+                        new sap.m.FlexBox({
+                            items: [metadataText]
+                        })
+                    ]
+                });
+            sidePanelAccordion.addSection(oMetadataSection);
+
+            //**********************************************
+            //**** QUERY ACCORDION PANEL CODE           ****
+            //**********************************************
+            var queryText = new sap.m.TextArea({
+                cols: 40,
+                rows: 7,
+                value: "everything() select()"
+            });
+            
+            var oQuerySection = new sap.ui.commons.AccordionSection("querySection", {
+                width: sidePanelWidth + "px",
+                title: "Query",
+                tooltip: "Execute a Query against the model",
+                collapsed: false,
+                content: [
+                    new sap.m.FlexBox({
+                        items: [queryText]
+                    }),
+                    new sap.m.FlexBox({
+                        alignItems: "Start",
+                        justifyContent: "SpaceBetween",
+                        items: [
+                            new sap.ui.commons.Button({
+                                text: "Execute",
+                                style: sap.ui.commons.ButtonStyle.Emph,
+                                press: function () {
+                                    oViewer.execute(oViewer.oDvl.Enumerations.DVLEXECUTE.DVLEXECUTE_QUERY, queryText.getValue());
+                                }
+                            })
+                        ]
+                    })] 
+            });
+
+
+            //**********************************************
+            //**** PAINT ACCORDION PANEL CODE           ****
+            //**********************************************
+            sidePanelAccordion.addSection(oQuerySection);
+            
+            //Text for Paint Query
+            var paintText = new sap.m.TextArea({
+                cols: 40,
+                rows: 7,
+                value: '<?xml version="1.0"?><PAINT_LIST><PAINT COLOR="#000000" OPACITY="0.5" ALLOW_OVERRIDE="true" DEFAULT="true"/><PAINT COLOR="#ff0000" OPACITY="1.0" VISIBLE="true"><NODE ID="Pressure Plate"/></PAINT></PAINT_LIST>'
+            });
+
+            var oPaintSection = new sap.ui.commons.AccordionSection("paintSection", {
+                width: sidePanelWidth + "px",
+                title: "Paint",
+                tooltip: "Execute a Paint API call against the model",
+                collapsed: false,
+                content: [
+                    new sap.m.FlexBox({
+                        items: [paintText]
+                    }),
+                    new sap.m.FlexBox({
+                        alignItems: "Start",
+                        justifyContent: "SpaceBetween",
+                        items: [
+                            //oExecuteTypeSelect,
+                            new sap.ui.commons.Button({
+                                text: "Execute",
+                                style: sap.ui.commons.ButtonStyle.Emph,
+                                press: function () {
+                                    oViewer.execute(oViewer.oDvl.Enumerations.DVLEXECUTE.DVLEXECUTE_PAINTXML, paintText.getValue());
+                                }
+                            })
+                        ]
+                    })]
+            });
+            sidePanelAccordion.addSection(oPaintSection);
+            
+            //**********************************************
+            //**** ADVANCED ACCORDION PANEL CODE        ****
+            //**********************************************
+            var outputText = new sap.m.TextArea({
+                width:"100%",
+                rows: 5,
+                value: ''
+            });
+
+            var loggingActive = new sap.ui.commons.CheckBox({
+                text: 'Logging Active',
+                tooltip: 'Check this flag to enable logging.',
+                checked: false,
+                change: function() {
+                    bLoggingActive = !bLoggingActive; 
+                }
+            });
+
+            var oAdvancedSection = new sap.ui.commons.AccordionSection("advancedSection", {
+                width: sidePanelWidth + "px",
+                title: "Advanced",
+                tooltip: "",
+                content: [
+                    new sap.m.FlexBox({
+                        alignItems: "Start",
+                        justifyContent: "SpaceBetween",
+                        items: [
+                            new sap.ui.commons.CheckBox({
+                                text: 'Toggle Debug Info',
+                                tooltip: 'Toggle debug information in viewport.',
+                                checked: false,
+                                change: function() {
+                                    oViewer.toggleDebugInfo();
+                                }
+                            }),
+                            new sap.ui.commons.Button({
+                                text: "Home",
+                                tooltip: 'Moves the camera back to the default position.',
+                                style: sap.ui.commons.ButtonStyle.Emph,
+                                press: function() {
+                                    oViewer.resetView();
+                                }
+                            })
+                        ]
+                    }),
+                    new sap.ui.commons.HorizontalDivider(),
+                    new sap.ui.commons.Label({
+                        text: "Target",
+                        labelFor: inputSelectedText,
+                    }),
+                    inputSelectedText,
+                    new sap.m.FlexBox({
+                        alignItems: "Start",
+                        justifyContent: "SpaceBetween",
+                        items: [new sap.ui.commons.Button({
+                                width: (sidePanelWidth - approxMargin) / 2 + "px",
+                                text: "Hide Target",
+                                style: sap.ui.commons.ButtonStyle.Emph,
+                                press: function() {
+                                    var input = inputSelectedText.getValue();
+                                    if (input != '') {
+                                        oViewer.hideObject(input);
+                                    }
+                                }
+                            }),
+                            new sap.ui.commons.Button({
+                                width: (sidePanelWidth - approxMargin) / 2 + "px",
+                                text: "Show Target",
+                                style: sap.ui.commons.ButtonStyle.Emph,
+                                press: function () {
+                                    var input = inputSelectedText.getValue();
+                                    oViewer.showObject(input);
+                                }
+                            })]
+                    }),
+                    new sap.m.HBox({ height: "5px" }),
+                    new sap.m.FlexBox({
+                        alignItems: "Start",
+                        justifyContent: "SpaceBetween",
+                        items: [new sap.ui.commons.Button({
+                            text: "Show All",
+                            style: sap.ui.commons.ButtonStyle.Emph,
+                            press: function () {
+                                oViewer.showAll();
+                            }
+                        }),
+                        new sap.ui.commons.Button({
+                            text: "Resize",
+                            style: sap.ui.commons.ButtonStyle.Emph,
+                            press: function () {
+                                oViewer.resize(512,512);
+                            }
+                        }),
+                        new sap.ui.commons.Button({
+                            text: "Full Screen",
+                            style: sap.ui.commons.ButtonStyle.Reject,
+                            press: function () {
+                                oViewer.oDvl.requestFullScreen(false, true);
+                            }
+                        })
+                        ]
+                    }),
+                    new sap.m.HBox({ height: "5px" }),
+                    new sap.m.FlexBox({
+                        alignItems: "Start",
+                        justifyContent: "SpaceBetween",
+                        items: [new sap.ui.commons.Button({
+                                width: (sidePanelWidth - approxMargin) / 2 + "px",
+                                text: "Isolate Target",
+                                style: sap.ui.commons.ButtonStyle.Emph,
+                                press: function() {
+                                    var input = inputSelectedText.getValue();
+                                    if (input != '') {
+                                        oViewer.isolate(input);
+                                    }
+                                }
+                            }),
+                            new sap.ui.commons.Button({
+                                width: (sidePanelWidth - approxMargin) / 2 + "px",
+                                text: "Clear Isolate",
+                                style: sap.ui.commons.ButtonStyle.Emph,
+                                press: function() {
+                                    oViewer.isolate(oViewer.oDvl.Enumerations.DVLID_INVALID);
+                                }
+                            })]
+                    }),
+                    new sap.ui.commons.HorizontalDivider(),
+                    new sap.m.HBox({ height: "5px" }),
+                    new sap.ui.commons.Label({
+                        text: "Output",
+                        labelFor: outputText,
+                    }),
+                    outputText,
+                    new sap.m.FlexBox({
+                        alignItems: "Start",
+                        justifyContent: "SpaceBetween",
+                        items: [
+                            new sap.ui.commons.Button({
+                                text: "GetPartsList",
+                                style: sap.ui.commons.ButtonStyle.Emph, //sap.ui.commons.ButtonStyle.Emph, //Red Style to indicate that this functionality not working properly
+                                press: function() {
+                                    outputText.setValue(JSON.stringify(oViewer.getPartsList()));
+                                }
+                            })]
+                    }),
+                    new sap.ui.commons.HorizontalDivider(),
+                    new sap.m.FlexBox({
+                        alignItems: "Start",
+                        justifyContent: "SpaceBetween",
+                        items: [new sap.ui.commons.Label({
+                                text: "Log",
+                                labelFor: logText,
+                            }),
+                            loggingActive]
+                    }),
+                    logText   
+                ]
+
+            });
+            
+            if (advanced) {
+                sidePanelAccordion.addSection(oAdvancedSection);
+            }
+
+            //**********************************************
+            //**** FINISH SETTING UP SIDE PANEL ACCORDION **
+            //**********************************************
+            sidePanelAccordion.setOpenedSectionsId(oMetadataSection.getId());
+            sidePanelAccordion.setWidth(sidePanelWidth + "px");
+            
+    	}); 
+    </script>
+  
+</head>
+<body id="body" class="sapUiBody">
+</body>
+</html>

@@ -1,0 +1,53 @@
+<ObjectPageSection id="equipment-related-section"
+	title="Related" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout" mode="Collapsed">
+	<subSections>
+		<ObjectPageSubSection title="Related Equipments"
+			id="equipment-related-equipment-sub-section">
+			<blocks>
+				<layout:Grid hSpacing="1" defaultSpan="L6 M6 S12">
+					<m:List headerText="Other instances of Model 0815" items="{/OtherInstancesOfModel}">
+						<m:items>
+							<m:StandardListItem width="100%" height="100%"
+								icon="{ModelImage}" title="{ModelName}" description="{SerialNumber}"
+								info="{Location}" counter="{Plant}">
+							</m:StandardListItem>
+						</m:items>
+					</m:List>
+					<m:List headerText="Similar Models" items="{/SimilarModels}">
+						<m:items>
+							<m:StandardListItem width="100%" height="100%"
+								icon="{ModelImage}" title="{ModelName}" description="{Model}"
+								info="{Manufacturer}" counter="{Generation}">
+							</m:StandardListItem>
+						</m:items>
+					</m:List>
+				</layout:Grid>
+			</blocks>
+			<actions>
+				<m:Button type="Transparent" icon="sap-icon://notes"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://edit"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://pushpin-off"></m:Button>
+			</actions>
+		</ObjectPageSubSection>
+		<ObjectPageSubSection title="Related Persons"
+			id="equipment-related-persons-sub-section">
+			<blocks>
+				<!-- <m:Label text="nmfbdnd"></m:Label> -->
+				<m:List items = "{/EquipmentRelatedPersons}">
+						<m:items>
+							<m:StandardListItem width="100%" height="100%"
+								icon="{PersonImage}" title="{PersonName}" description="{PersonJob}"
+								info="{PersonWorkedOn}">
+							</m:StandardListItem>
+						</m:items>
+					</m:List>
+			</blocks>
+			<actions>
+				<m:Button type="Transparent" icon="sap-icon://notes"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://edit"></m:Button>
+				<m:Button type="Transparent" icon="sap-icon://pushpin-off"></m:Button>
+			</actions>
+		</ObjectPageSubSection>
+	</subSections>
+</ObjectPageSection>

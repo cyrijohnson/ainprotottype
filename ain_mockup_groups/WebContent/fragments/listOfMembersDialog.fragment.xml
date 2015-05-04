@@ -1,0 +1,9 @@
+<SelectDialog xmlns:core="sap.ui.core" xmlns="sap.m" title="Members"
+	multiSelect="true" items="{/listOfMembers}" confirm="handleSelect">
+	<StandardListItem title="{fullName}" description="{email}">
+		<customData>
+			<core:CustomData key="email" value="{fullName}">
+			</core:CustomData>
+		</customData>
+	</StandardListItem>
+</SelectDialog>

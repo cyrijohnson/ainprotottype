@@ -1,0 +1,33 @@
+<ObjectPageSection id="equipment-related-section"
+	title="Related" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout" mode="Collapsed">
+	<subSections>
+		<ObjectPageSubSection title="Measurement Points">
+			<blocks>
+				<m:Label text="Content goes here.."></m:Label>
+			</blocks>
+		</ObjectPageSubSection>
+		<ObjectPageSubSection title="Planned Maintanance">
+			<blocks>
+				<m:Label text="Content goes here.."></m:Label>
+			</blocks>
+		</ObjectPageSubSection>
+		<ObjectPageSubSection title="Unplanned Maintanance">
+			<blocks>
+				<m:Label text="Content goes here.."></m:Label>
+			</blocks>
+		</ObjectPageSubSection>
+		<ObjectPageSubSection title="Safety Rules">
+			<blocks>
+				<!-- <m:Label text="Content goes here.."></m:Label> -->
+					<m:List items = "{/EquipmentSafetyRules}">
+						<m:items>
+							<m:StandardListItem width="100%" height="100%"
+								icon="{RuleImage}" title="{Rule}">
+							</m:StandardListItem>
+						</m:items>
+					</m:List>
+			</blocks>
+		</ObjectPageSubSection>
+	</subSections>
+</ObjectPageSection>
